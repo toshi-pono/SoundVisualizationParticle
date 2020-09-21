@@ -1,12 +1,15 @@
 const MAX_PERTICLE_RADIUS = 10;
 const MIN_PERTICLE_RADIUS = 5;
 
+const COLOR_LIST = [0xfffde6, 0xffe6e6, 0xebe6ff];
+const COLOR_LEN = COLOR_LIST.length;
+
 class Perticle {
   constructor(x, y) {
     //this.radius = rand(MAX_PERTICLE_RADIUS, MIN_PERTICLE_RADIUS);
     this.radius = 10;
     this.pixi = new PIXI.Graphics()
-      .beginFill(0xfffde6)
+      .beginFill(COLOR_LIST[rand(COLOR_LEN)])
       .drawEllipse(0, 0, this.radius, this.radius)
       .endFill();
     this.pixi.x = x;
@@ -17,7 +20,7 @@ class Perticle {
     this.animationCounter = 0;
     this.animationState = 0;
     this.randNum = rand(20);
-    this.speedY = rand(11, 7);
+    this.speedY = rand(10, 6);
   }
   Init(x, y) {
     this.pixi.x = x;
@@ -29,7 +32,7 @@ class Perticle {
     this.animationCounter = 0;
     this.animationState = 0;
     this.randNum = rand(20);
-    this.speedY = rand(11, 7);
+    this.speedY = rand(10, 6);
   }
   Scale(magnification) {
     this.pixi.scale.x = magnification;
@@ -41,10 +44,10 @@ class Perticle {
       this.pixi.x =
         this.defaltX +
         20 *
-          Math.sin((this.animationCounter / 20 + this.randNum / 20) * Math.PI);
+          Math.sin((this.animationCounter / 30 + this.randNum / 20) * Math.PI);
       this.pixi.y -= this.speedY;
-      if (this.animationCounter > 60) {
-        this.pixi.alpha -= 0.02;
+      if (this.animationCounter > 50) {
+        this.pixi.alpha -= 0.03;
       }
     } else {
       this.pixi.visible = false;
