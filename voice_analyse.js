@@ -21,7 +21,7 @@ var bufferSize = 1024;
 var recordingFlg = false;
 
 // 描画用定数
-const AUDIO_ThRESHOLD = 128;
+const AUDIO_ThRESHOLD = 180;
 const SCREEN = {
   width: 1400,
   height: 875,
@@ -109,7 +109,7 @@ function addObj(noteNum, scale) {
       (noteNum / 88) * SCREEN.width,
       SCREEN.height - 100 + rand(100)
     );
-    objList[nextAddLocation].Scale((scale - AUDIO_ThRESHOLD) / 20 + 0.5);
+    objList[nextAddLocation].Scale((scale - AUDIO_ThRESHOLD) / 15 + 0.4);
     nextAddLocation++;
   } else if (objList.length > 0 && objList[0].animationState == -1) {
     // 0を使う
